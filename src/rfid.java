@@ -15,7 +15,7 @@ import java.util.Calendar;
 import java.util.Scanner;
 
 public class rfid {
-
+	public static launchDevice device;
 	public static void main(String[] args) throws IOException, ParseException {
 		Thread rfidReadThread = new Thread(new threadRfidRead(),
 				"rfidReadThread");
@@ -26,7 +26,8 @@ public class rfid {
 //		threadCheckDB.start();
 //		DB db = new DB();
 //		db.checkExpiration("13/04/13", "13/04/15");
-
+//		 device = new launchDevice();
+		 
 	}
 
 	public static String readIdTag() throws UnsupportedEncodingException,

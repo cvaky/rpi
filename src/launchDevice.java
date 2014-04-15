@@ -42,24 +42,25 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 
-class launchDevice implements Runnable {
+class launchDevice  {
 
 	Thread runner;
 	String idTag;
-
+	final GpioController gpio;
+	static GpioPinDigitalOutput led1;
 	public launchDevice() {
+		 System.out.println("<--Pi4J--> GPIO Blink Example ... started.");
+	          gpio = GpioFactory.getInstance();
+	          led1 = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01);
+	   
 	}
 
 
-	public void run() {
-		  
-        System.out.println("<--Pi4J--> GPIO Blink Example ... started.");
-        final GpioController gpio = GpioFactory.getInstance();
-        final GpioPinDigitalOutput led1 = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01);
-        led1.blink(4000, 4000);
+	public static void launch() {
+       led1.blink(4000, 4000);
  	// (this method will forcefully shutdown all GPIO monitoring threads and scheduled tasks)
-         gpio.shutdown();   
-         led1.removeAllListeners();
+//         gpio.shutdown();   
+//         led1.removeAllListeners();
 	}
 
 }
