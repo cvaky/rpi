@@ -46,7 +46,7 @@ class launchDevice  {
 
 	Thread runner;
 	String idTag;
-	final GpioController gpio;
+	static GpioController gpio;
 	static GpioPinDigitalOutput led1;
 	public launchDevice() {
 		 System.out.println("<--Pi4J--> GPIO Blink Example ... started.");
@@ -57,7 +57,15 @@ class launchDevice  {
 
 
 	public static void launch() {
-       led1.blink(4000, 4000);
+    if (gpio==null){
+        gpio = GpioFactory.getInstance();
+    }
+		if (led1==null){
+          led1 = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01);
+      }
+		if (led1!=null){
+		led1.blink(4000, 4000);
+       }
  	// (this method will forcefully shutdown all GPIO monitoring threads and scheduled tasks)
 //         gpio.shutdown();   
 //         led1.removeAllListeners();
