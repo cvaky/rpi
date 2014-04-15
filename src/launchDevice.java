@@ -58,8 +58,8 @@ class launchDevice implements Runnable {
         final GpioPinDigitalOutput led1 = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01);
         led1.blink(4000, 4000);
  	// (this method will forcefully shutdown all GPIO monitoring threads and scheduled tasks)
-         gpio.shutdown();   <--- implement this method call if you wish to terminate the Pi4J GPIO controller
-   
+         gpio.shutdown();   
+         led1.removeAllListeners();
 	}
 
 }
