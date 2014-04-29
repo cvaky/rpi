@@ -84,7 +84,7 @@ public class DB {
 		if (dateExpireFrom.compareTo(dateCurrent) * dateCurrent.compareTo(dateExpireTo) > 0){
 			System.out.println("Entrance allow");
 
-				launchDevice.launch();
+//				launchDevice.launch();
 			
 		}else {
 			System.out.println("Entrance DISallow");
