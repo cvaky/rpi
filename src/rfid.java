@@ -17,6 +17,8 @@ import java.util.Scanner;
 public class rfid {
 	public static launchDevice device;
 	public static void main(String[] args) throws IOException, ParseException {
+	
+		DB.readItems("");
 		Thread rfidReadThread = new Thread(new threadRfidRead(),
 				"rfidReadThread");
 		 rfidReadThread.start();
@@ -108,7 +110,8 @@ class threadMysqlCheck implements Runnable {
 			System.out.println(idTag+ "is in DB");
 			Calendar currentDate = Calendar.getInstance(); 
 			SimpleDateFormat formatter = new SimpleDateFormat(
-					"yyyy/MM/dd HH:mm:ss"); // format it as per your requirement
+					"dd/MM/yyyy HH:mm:ss"); // format it as per your requirement
+		
 			String dateNow = formatter.format(currentDate.getTime());
 
 			int id = database.checkAdjustable(idUser);
