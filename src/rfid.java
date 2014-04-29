@@ -113,7 +113,7 @@ class threadMysqlCheck implements Runnable {
 					"dd/MM/yyyy HH:mm:ss"); // format it as per your requirement
 		
 			String dateNow = formatter.format(currentDate.getTime());
-dss
+
 			int id = database.checkAdjustable(idUser);
 			if (id > 0) {
 				database.insertHistoryDB(id, 0, "", dateNow, true);
